@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Interiors — Bespoke Interior Atelier</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#211f1d;
+    --plaster:#ece4d5;
+    --paper:#f8f4ea;
+    --emerald:#2f3d34;
+    --emerald-dark:#232f28;
+    --brass:#b4884f;
+    --brass-light:#d1ab77;
+    --clay:#bd6f52;
+    --slate:#5c6b68;
+    --line: rgba(33,31,29,0.14);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:"Inter", Arial, sans-serif;
+    background:var(--plaster);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+  }
+
+  .monogram{
+    position:fixed;
+    top:24px;
+    left:24px;
+    width:56px;
+    height:56px;
+    background:var(--ink);
+    color:var(--plaster);
+    border-radius:4px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:"Fraunces", serif;
+    font-weight:500;
+    font-size:1.1rem;
+    letter-spacing:0.02em;
+    z-index:100;
+  }
+
+  a.cta:focus-visible,
+  button:focus-visible,
+  input:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:3px;
+  }
+
+  /* ---------------- Hero ---------------- */
+
+  .hero{
+    position:relative;
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:120px 8% 40px;
+  }
+
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+    max-width:1200px;
+    margin:0 auto;
+    width:100%;
+  }
+
+  .eyebrow{
+    font-family:"Inter", sans-serif;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin-bottom:18px;
+  }
+
+  .eyebrow--dark{ color:var(--brass-light); }
+
+  .hero-copy h1{
+    font-family:"Fraunces", serif;
+    font-weight:500;
+    font-size:clamp(2.8rem, 6vw, 4.6rem);
+    line-height:1.02;
+    color:var(--ink);
+    margin-bottom:24px;
+    animation:rise 0.7s ease-out both;
+  }
+
+  .hero-copy h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--emerald);
+  }
+
+  .lede{
+    font-size:1.05rem;
+    line-height:1.6;
+    color:#4a463f;
+    max-width:38ch;
+    margin-bottom:32px;
+  }
+
+  .cta{
+    display:inline-block;
+    padding:16px 30px;
+    background:var(--ink);
+    color:var(--plaster);
+    text-decoration:none;
+    border-radius:4px;
+    font-size:0.92rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+
+  .cta:hover{ background:var(--emerald); transform:translateY(-2px); }
+
+  .hero-gallery{
+    position:relative;
+    height:520px;
+  }
+
+  .plate{
+    position:absolute;
+    border:1px solid var(--brass);
+    border-radius:4px;
+    background:var(--paper);
+    padding:8px 8px 14px;
+    box-shadow:0 18px 34px rgba(33,31,29,0.18);
+  }
+
+  .plate img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    display:block;
+    border-radius:2px;
+    transition:transform 0.6s ease;
+  }
+
+  .plate:hover img{ transform:scale(1.06); }
+
+  .plate figcaption{
+    font-family:"Fraunces", serif;
+    font-style:italic;
+    font-size:0.85rem;
+    color:var(--slate);
+    margin-top:10px;
+    text-align:center;
+  }
+
+  .plate--a{
+    width:58%;
+    top:0;
+    left:0;
+    transform:rotate(-3deg);
+    z-index:2;
+  }
+
+  .plate--b{
+    width:48%;
+    bottom:0;
+    right:0;
+    transform:rotate(2deg);
+    z-index:1;
+  }
+
+  /* signature: swatch rail */
+
+  .swatch-rail{
+    max-width:1200px;
+    margin:64px auto 0;
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    border-top:1px solid var(--line);
+    padding-top:28px;
+  }
+
+  .swatch{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.85rem;
+    color:#4a463f;
+    padding:8px 14px 8px 8px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:rgba(248,244,234,0.6);
+    transition:transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .swatch:hover{ transform:translateY(-2px); border-color:var(--brass); }
+
+  .chip{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    display:inline-block;
+    flex-shrink:0;
+  }
+
+  /* ---------------- Order Section ---------------- */
+
+  .order{
+    background:var(--emerald-dark);
+    background-image: radial-gradient(circle at 85% 15%, rgba(180,136,79,0.12), transparent 45%);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:100px 6%;
+  }
+
+  .order-card{
+    width:100%;
+    max-width:460px;
+    background:var(--paper);
+    padding:44px 40px 40px;
+    border-radius:6px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.35);
+  }
+
+  .order-card h2{
+    font-family:"Fraunces", serif;
+    font-weight:500;
+    font-size:2rem;
+    color:var(--ink);
+    margin-bottom:12px;
+  }
+
+  .order-sub{
+    font-size:0.95rem;
+    color:#5c574d;
+    margin-bottom:28px;
+    line-height:1.5;
+  }
+
+  form label{
+    display:block;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:6px;
+  }
+
+  form > label{ margin-bottom:20px; }
+
+  input{
+    width:100%;
+    height:48px;
+    margin-top:6px;
+    padding:0 14px;
+    border-radius:4px;
+    border:1px solid #cfc7b6;
+    background:#fff;
+    font-size:0.98rem;
+    font-family:"Inter", sans-serif;
+    color:var(--ink);
+    transition:border-color 0.2s ease;
+  }
+
+  input:focus{ border-color:var(--brass); }
+
+  button[type="submit"]{
+    width:100%;
+    height:52px;
+    margin-top:8px;
+    border:none;
+    border-radius:4px;
+    background:var(--brass);
+    color:var(--ink);
+    font-size:1rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    cursor:pointer;
+    transition:background 0.25s ease, transform 0.15s ease;
+  }
+
+  button[type="submit"]:hover{ background:var(--brass-light); transform:translateY(-1px); }
+
+  /* ---------------- Footer ---------------- */
+
+  footer{
+    background:var(--ink);
+    color:#9c9788;
+    text-align:center;
+    padding:26px 20px;
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+  }
+
+  footer strong{ color:var(--plaster); font-family:"Fraunces", serif; }
+
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(16px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* ---------------- Responsive ---------------- */
+
+  @media (max-width:900px){
+    .hero{ padding:110px 6% 40px; }
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-gallery{ height:420px; margin-top:20px; }
+  }
+
+  @media (max-width:520px){
+    .monogram{ width:46px; height:46px; font-size:0.95rem; top:16px; left:16px; }
+    .plate--a{ width:64%; }
+    .plate--b{ width:54%; }
+    .order-card{ padding:34px 24px 30px; }
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="monogram">EI</div>
+
+  <section class="hero">
+    <div class="hero-inner">
+
+      <div class="hero-copy">
+        <p class="eyebrow">Bespoke Interior Atelier</p>
+        <h1>Elite<br><em>Interiors</em></h1>
+        <p class="lede">We shape rooms around how you actually live — considered materials, tailored layouts, one studio from concept through install.</p>
+        <a href="#order" class="cta">Start your project</a>
+      </div>
+
+      <div class="hero-gallery">
+        <figure class="plate plate--a">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrwZI6_e_eWDtVi7k7M69Mp0a90_A0mh3oX4lYEdsr2PFnJBG8w8QRRYkL&s=10" alt="Living room interior with warm furnishings">
+          <figcaption>Living Room, Coimbatore</figcaption>
+        </figure>
+        <figure class="plate plate--b">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlT1eOn1I6GUlxm9YZugRrnm3HL7CkxO60yiB4EqhSbwYQJpBicZwsOOc&s=10" alt="Study room interior design">
+          <figcaption>Study, Coimbatore</figcaption>
+        </figure>
+      </div>
+
+    </div>
+
+    <div class="swatch-rail">
+      <div class="swatch"><span class="chip" style="background:var(--clay)"></span>Living</div>
+      <div class="swatch"><span class="chip" style="background:var(--brass)"></span>Kitchen</div>
+      <div class="swatch"><span class="chip" style="background:var(--emerald)"></span>Bedroom</div>
+      <div class="swatch"><span class="chip" style="background:var(--slate)"></span>Study</div>
+    </div>
+  </section>
+
+  <section class="order" id="order">
+    <div class="order-card">
+      <p class="eyebrow eyebrow--dark">Place an order</p>
+      <h2>Let's talk about your space</h2>
+      <p class="order-sub">Share a few details and our design lead will call you within a day.</p>
+
+      <form>
+        <label>Name
+          <input type="text" placeholder="Your full name" required>
+        </label>
+        <label>Phone number
+          <input type="tel" placeholder="10-digit mobile number" required>
+        </label>
+        <label>Address
+          <input type="text" placeholder="Project address" required>
+        </label>
+        <button type="submit">Send request</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <strong>EI</strong> &nbsp;Elite Interiors — Coimbatore studio
+  </footer>
+
+</body>
+</html>
